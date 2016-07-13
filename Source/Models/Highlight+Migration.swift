@@ -26,7 +26,7 @@ extension Highlight {
             realm.beginWrite()
             realm.deleteAll()
             for oldHighlight in highlights! {
-                var newHighlight = Highlight()
+                let newHighlight = Highlight()
                 newHighlight.bookId = oldHighlight.valueForKey("bookId") as! String
                 newHighlight.content = oldHighlight.valueForKey("content") as! String
                 newHighlight.contentPost = oldHighlight.valueForKey("contentPost") as! String
@@ -39,7 +39,7 @@ extension Highlight {
                 realm.add(newHighlight, update: true)
             }
             try! realm.commitWrite()
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isMigrated")
+            FolioReader.defaults.setBool(true, forKey: "isMigrated")
         } catch let error as NSError {
             print("Error on migrateuserDataToRealm : \(error)")
         }
