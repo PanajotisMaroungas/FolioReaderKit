@@ -12,7 +12,6 @@
 		B0D6991B1D035FA2003B4CCD /* FolioReaderKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6991A1D035FA2003B4CCD /* FolioReaderKitTests.swift */; };
 		B0D69C481D0387F7003B4CCD /* FRBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D69BB91D0387F7003B4CCD /* FRBook.swift */; };
 		B0D69C491D0387F7003B4CCD /* FREpubParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D69BBA1D0387F7003B4CCD /* FREpubParser.swift */; };
-		B0D69C4A1D0387F7003B4CCD /* FRHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D69BBB1D0387F7003B4CCD /* FRHighlight.swift */; };
 		B0D69C4B1D0387F7003B4CCD /* FRMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D69BBC1D0387F7003B4CCD /* FRMediaType.swift */; };
 		B0D69C4C1D0387F7003B4CCD /* FRMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D69BBD1D0387F7003B4CCD /* FRMetadata.swift */; };
 		B0D69C4D1D0387F7003B4CCD /* FRResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D69BBE1D0387F7003B4CCD /* FRResource.swift */; };
@@ -144,9 +143,10 @@
 		B0D69CD11D0388EF003B4CCD /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCB1D0388EF003B4CCD /* AEXML.framework */; };
 		B0D69CD21D0388EF003B4CCD /* FontBlaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCC1D0388EF003B4CCD /* FontBlaster.framework */; };
 		B0D69CD31D0388EF003B4CCD /* JSQWebViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCD1D0388EF003B4CCD /* JSQWebViewController.framework */; };
-		B0D69CD41D0388EF003B4CCD /* UIMenuItem_CXAImageSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCE1D0388EF003B4CCD /* UIMenuItem_CXAImageSupport.framework */; };
 		B0D69CD51D0388EF003B4CCD /* ZFDragableModalTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */; };
 		B0D69CD61D0388EF003B4CCD /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */; };
+		C581D6DF1D35F46C00B6EF95 /* MenuItemKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C581D6DE1D35F46C00B6EF95 /* MenuItemKit.framework */; };
+		C581D6E11D35FAC200B6EF95 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C581D6E01D35FAC200B6EF95 /* RealmSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,7 +168,6 @@
 		B0D6991C1D035FA2003B4CCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0D69BB91D0387F7003B4CCD /* FRBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRBook.swift; sourceTree = "<group>"; };
 		B0D69BBA1D0387F7003B4CCD /* FREpubParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FREpubParser.swift; sourceTree = "<group>"; };
-		B0D69BBB1D0387F7003B4CCD /* FRHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRHighlight.swift; sourceTree = "<group>"; };
 		B0D69BBC1D0387F7003B4CCD /* FRMediaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRMediaType.swift; sourceTree = "<group>"; };
 		B0D69BBD1D0387F7003B4CCD /* FRMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRMetadata.swift; sourceTree = "<group>"; };
 		B0D69BBE1D0387F7003B4CCD /* FRResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRResource.swift; sourceTree = "<group>"; };
@@ -300,9 +299,10 @@
 		B0D69CCB1D0388EF003B4CCD /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
 		B0D69CCC1D0388EF003B4CCD /* FontBlaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontBlaster.framework; path = Carthage/Build/iOS/FontBlaster.framework; sourceTree = "<group>"; };
 		B0D69CCD1D0388EF003B4CCD /* JSQWebViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQWebViewController.framework; path = Carthage/Build/iOS/JSQWebViewController.framework; sourceTree = "<group>"; };
-		B0D69CCE1D0388EF003B4CCD /* UIMenuItem_CXAImageSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIMenuItem_CXAImageSupport.framework; path = Carthage/Build/iOS/UIMenuItem_CXAImageSupport.framework; sourceTree = "<group>"; };
 		B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZFDragableModalTransition.framework; path = Carthage/Build/iOS/ZFDragableModalTransition.framework; sourceTree = "<group>"; };
 		B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		C581D6DE1D35F46C00B6EF95 /* MenuItemKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MenuItemKit.framework; path = Carthage/Build/iOS/MenuItemKit.framework; sourceTree = "<group>"; };
+		C581D6E01D35FAC200B6EF95 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,9 +311,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D69CD11D0388EF003B4CCD /* AEXML.framework in Frameworks */,
+				C581D6DF1D35F46C00B6EF95 /* MenuItemKit.framework in Frameworks */,
+				C581D6E11D35FAC200B6EF95 /* RealmSwift.framework in Frameworks */,
 				B0D69CD21D0388EF003B4CCD /* FontBlaster.framework in Frameworks */,
 				B0D69CD31D0388EF003B4CCD /* JSQWebViewController.framework in Frameworks */,
-				B0D69CD41D0388EF003B4CCD /* UIMenuItem_CXAImageSupport.framework in Frameworks */,
 				B0D69CD51D0388EF003B4CCD /* ZFDragableModalTransition.framework in Frameworks */,
 				B0D69CD61D0388EF003B4CCD /* ZipArchive.framework in Frameworks */,
 			);
@@ -375,9 +376,10 @@
 				B0D69CCB1D0388EF003B4CCD /* AEXML.framework */,
 				B0D69CCC1D0388EF003B4CCD /* FontBlaster.framework */,
 				B0D69CCD1D0388EF003B4CCD /* JSQWebViewController.framework */,
-				B0D69CCE1D0388EF003B4CCD /* UIMenuItem_CXAImageSupport.framework */,
 				B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */,
 				B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */,
+				C581D6DE1D35F46C00B6EF95 /* MenuItemKit.framework */,
+				C581D6E01D35FAC200B6EF95 /* RealmSwift.framework */,
 			);
 			name = Frameworks;
 			path = ..;
@@ -412,7 +414,6 @@
 			children = (
 				B0D69BB91D0387F7003B4CCD /* FRBook.swift */,
 				B0D69BBA1D0387F7003B4CCD /* FREpubParser.swift */,
-				B0D69BBB1D0387F7003B4CCD /* FRHighlight.swift */,
 				B0D69BBC1D0387F7003B4CCD /* FRMediaType.swift */,
 				B0D69BBD1D0387F7003B4CCD /* FRMetadata.swift */,
 				B0D69BBE1D0387F7003B4CCD /* FRResource.swift */,
@@ -831,7 +832,6 @@
 				B0D69C5A1D0387F7003B4CCD /* FolioReaderKit.swift in Sources */,
 				B0D69C5F1D0387F7003B4CCD /* FolioReaderSidePanel.swift in Sources */,
 				B0D69C5C1D0387F7003B4CCD /* FolioReaderPageIndicator.swift in Sources */,
-				B0D69C4A1D0387F7003B4CCD /* FRHighlight.swift in Sources */,
 				B0D69C5D1D0387F7003B4CCD /* FolioReaderPlayerMenu.swift in Sources */,
 				B0D69C521D0387F7003B4CCD /* FRTocReference.swift in Sources */,
 				B0D69C4D1D0387F7003B4CCD /* FRResource.swift in Sources */,

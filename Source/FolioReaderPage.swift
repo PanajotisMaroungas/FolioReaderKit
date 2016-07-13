@@ -8,7 +8,7 @@
 
 import UIKit
 import SafariServices
-import UIMenuItem_CXAImageSupport
+import MenuItemKit
 import JSQWebViewController
 
 @objc protocol FolioPageDelegate: class {
@@ -639,21 +639,39 @@ extension UIWebView {
         let pink = UIImage(readerImageNamed: "pink-marker")
         let underline = UIImage(readerImageNamed: "underline-marker")
         
+        let menuController = UIMenuController.sharedMenuController()
+        
         let highlightItem = UIMenuItem(title: readerConfig.localizedHighlightMenu, action: #selector(UIWebView.highlight(_:)))
         let playAudioItem = UIMenuItem(title: readerConfig.localizedPlayMenu, action: #selector(UIWebView.play(_:)))
         let defineItem = UIMenuItem(title: readerConfig.localizedDefineMenu, action: #selector(UIWebView.define(_:)))
-        let colorsItem = UIMenuItem(title: "C", image: colors!, action: #selector(UIWebView.colors(_:)))
-        let shareItem = UIMenuItem(title: "S", image: share!, action: #selector(UIWebView.share(_:)))
-        let removeItem = UIMenuItem(title: "R", image: remove!, action: #selector(UIWebView.remove(_:)))
-        let yellowItem = UIMenuItem(title: "Y", image: yellow!, action: #selector(UIWebView.setYellow(_:)))
-        let greenItem = UIMenuItem(title: "G", image: green!, action: #selector(UIWebView.setGreen(_:)))
-        let blueItem = UIMenuItem(title: "B", image: blue!, action: #selector(UIWebView.setBlue(_:)))
-        let pinkItem = UIMenuItem(title: "P", image: pink!, action: #selector(UIWebView.setPink(_:)))
-        let underlineItem = UIMenuItem(title: "U", image: underline!, action: #selector(UIWebView.setUnderline(_:)))
+        let colorsItem = UIMenuItem(image: colors!) { [weak self] _ in
+            self?.colors(menuController)
+        }
+        let shareItem = UIMenuItem(image: share!) { [weak self] _ in
+            self?.share(menuController)
+        }
+        let removeItem = UIMenuItem(image: remove!) { [weak self] _ in
+            self?.remove(menuController)
+        }
+        let yellowItem = UIMenuItem(image: yellow!) { [weak self] _ in
+            self?.setYellow(menuController)
+        }
+        let greenItem = UIMenuItem(image: green!) { [weak self] _ in
+            self?.setGreen(menuController)
+        }
+        let blueItem = UIMenuItem(image: blue!) { [weak self] _ in
+            self?.setBlue(menuController)
+        }
+        let pinkItem = UIMenuItem(image: pink!) { [weak self] _ in
+            self?.setPink(menuController)
+        }
+        let underlineItem = UIMenuItem(image: underline!) { [weak self] _ in
+            self?.setUnderline(menuController)
+        }
         
         let menuItems = [playAudioItem, highlightItem, defineItem, colorsItem, removeItem, yellowItem, greenItem, blueItem, pinkItem, underlineItem, shareItem]
 
-        UIMenuController.sharedMenuController().menuItems = menuItems
+        menuController.menuItems = menuItems
     }
     
     func setMenuVisible(menuVisible: Bool, animated: Bool = true, andRect rect: CGRect = CGRectZero) {
@@ -679,16 +697,16 @@ extension UIWebView {
     }
 }
 
-extension UIMenuItem {
-    convenience init(title: String, image: UIImage, action: Selector) {
-      #if COCOAPODS
-        self.init(title: title, action: action)
-        self.cxa_initWithTitle(title, action: action, image: image, hidesShadow: true)
-      #else
-        let settings = CXAMenuItemSettings()
-        settings.image = image
-        settings.shadowDisabled = true
-        self.init(title: title, action: action, settings: settings)
-      #endif
-    }
-}
+//extension UIMenuItem {
+//    convenience init(title: String, image: UIImage, action: Selector) {
+//      #if COCOAPODS
+//        self.init(title: title, action: action)
+//        self.cxa_initWithTitle(title, action: action, image: image, hidesShadow: true)
+//      #else
+//        let settings = UIMenuItem(title: <#T##String#>, image: <#T##UIImage#>, action: <#T##Selector#>)
+//        settings.image = image
+//        settings.shadowDisabled = true
+//        self.init(title: title, action: action, settings: settings)
+//      #endif
+//    }
+//}
