@@ -393,6 +393,14 @@ class FolioReaderPage: UICollectionViewCell, UIWebViewDelegate, UIGestureRecogni
             webView.createMenu(options: false)
         }
         
+        
+        
+        if !webView.isShare && !webView.isColors {
+            if let result = webView.js("getSelectedText()") where result.componentsSeparatedByString(" ").count == 1 {
+                webView.createMenu(options: false)
+            }
+        }
+        
         return super.canPerformAction(action, withSender: sender)
     }
 
@@ -481,29 +489,29 @@ extension UIWebView {
 
         // menu on existing highlight
         if isShare {
-            if action == #selector(UIWebView.colors(_:)) || (action == #selector(UIWebView.share(_:)) && readerConfig.allowSharing) || action == #selector(UIWebView.remove(_:)) {
-                return true
-            }
+//            if action == #selector(UIWebView.colors(_:)) || (action == #selector(UIWebView.share(_:)) && readerConfig.allowSharing) || action == #selector(UIWebView.remove(_:)) {
+//                return true
+//            }
             return false
 
         // menu for selecting highlight color
         } else if isColors {
-            if action == #selector(UIWebView.setYellow(_:)) || action == #selector(UIWebView.setGreen(_:)) || action == #selector(UIWebView.setBlue(_:)) || action == #selector(UIWebView.setPink(_:)) || action == #selector(UIWebView.setUnderline(_:)) {
-                return true
-            }
+//            if action == #selector(UIWebView.setYellow(_:)) || action == #selector(UIWebView.setGreen(_:)) || action == #selector(UIWebView.setBlue(_:)) || action == #selector(UIWebView.setPink(_:)) || action == #selector(UIWebView.setUnderline(_:)) {
+//                return true
+//            }
             return false
 
         // default menu
         } else {
-            var isOneWord = false
-            if let result = js("getSelectedText()") where result.componentsSeparatedByString(" ").count == 1 {
-                isOneWord = true
-            }
+//            var isOneWord = false
+//            if let result = js("getSelectedText()") where result.componentsSeparatedByString(" ").count == 1 {
+//                isOneWord = true
+//            }
             
             if action == #selector(UIWebView.highlight(_:))
-            || (action == #selector(UIWebView.define(_:)) && isOneWord)
+//            || (action == #selector(UIWebView.define(_:)) && isOneWord)
             || (action == #selector(UIWebView.play(_:)) && (book.hasAudio() || readerConfig.enableTTS))
-            || (action == #selector(UIWebView.share(_:)) && readerConfig.allowSharing == true)
+//            || (action == #selector(UIWebView.share(_:)) && readerConfig.allowSharing == true)
             || (action == #selector(NSObject.copy(_:)) && readerConfig.allowSharing == true) {
                 return true
             }
@@ -515,15 +523,14 @@ extension UIWebView {
         return true
     }
     
-    func share(sender: UIMenuController) {
-        
+    func share(sender: UIMenuController?) {
         if isShare {
             if let textToShare = js("getHighlightContent()") {
-                FolioReader.sharedInstance.readerCenter.shareHighlight(textToShare, rect: sender.menuFrame)
+                FolioReader.sharedInstance.readerCenter.shareHighlight(textToShare, rect: sender?.menuFrame ?? CGRectZero)
             }
         } else {
             if let textToShare = js("getSelectedText()") {
-                FolioReader.sharedInstance.readerCenter.shareHighlight(textToShare, rect: sender.menuFrame)
+                FolioReader.sharedInstance.readerCenter.shareHighlight(textToShare, rect: sender?.menuFrame ?? CGRectZero)
             }
         }
         
@@ -669,7 +676,30 @@ extension UIWebView {
             self?.setUnderline(menuController)
         }
         
-        let menuItems = [playAudioItem, highlightItem, defineItem, colorsItem, removeItem, yellowItem, greenItem, blueItem, pinkItem, underlineItem, shareItem]
+//        let menuItems = [playAudioItem, highlightItem, defineItem, colorsItem, removeItem, yellowItem, greenItem, blueItem, pinkItem, underlineItem, shareItem]
+        var menuItems = [shareItem]
+        
+        // menu on existing highlight
+        if isShare {
+            menuItems = [colorsItem, removeItem]
+            if readerConfig.allowSharing {
+                menuItems.append(shareItem)
+            }
+        } else if isColors {
+            // menu for selecting highlight color
+            menuItems = [yellowItem, greenItem, blueItem, pinkItem, underlineItem]
+        } else {
+            // default menu
+            menuItems = [highlightItem, defineItem, shareItem]
+            
+            if book.hasAudio() || readerConfig.enableTTS {
+                menuItems.insert(playAudioItem, atIndex: 0)
+            }
+            
+            if !readerConfig.allowSharing {
+                menuItems.removeLast()
+            }
+        }
 
         menuController.menuItems = menuItems
     }
