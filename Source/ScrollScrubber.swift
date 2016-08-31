@@ -34,16 +34,23 @@ class ScrollScrubber: NSObject, UIScrollViewDelegate {
     var scrollStart: CGFloat!
     var scrollDelta: CGFloat!
     var scrollDeltaTimer: NSTimer!
+
+	var frame: CGRect! {
+		didSet {
+			self.slider.frame = frame
+		}
+	}
     
     init(frame:CGRect) {
         super.init()
-        
+
         slider = UISlider()
         slider.layer.anchorPoint = CGPoint(x: 0, y: 0)
         slider.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
-        slider.frame = frame
         slider.alpha = 0
-        
+
+		self.frame = frame
+
         updateColors()
         
         // less obtrusive knob and fixes jump: http://stackoverflow.com/a/22301039/484780
@@ -58,7 +65,7 @@ class ScrollScrubber: NSObject, UIScrollViewDelegate {
         slider.addTarget(self, action: #selector(ScrollScrubber.sliderTouchUp(_:)), forControlEvents: .TouchUpInside)
         slider.addTarget(self, action: #selector(ScrollScrubber.sliderTouchUp(_:)), forControlEvents: .TouchUpOutside)
     }
-    
+
     func updateColors() {
         slider.minimumTrackTintColor = readerConfig.tintColor
         slider.maximumTrackTintColor = isNight(readerConfig.nightModeSeparatorColor, readerConfig.menuSeparatorColor)
